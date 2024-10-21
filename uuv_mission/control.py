@@ -3,6 +3,7 @@ class PDController:
         self.K_P = K_P
         self.K_D = K_D
         self.previous_error = 0
+        total_error = 0
 
     def compute_action(self, reference: float, output: float) -> float:
         error = reference - output
