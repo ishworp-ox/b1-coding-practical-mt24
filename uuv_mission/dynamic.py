@@ -75,8 +75,9 @@ class Mission:
 
     @classmethod
     def from_csv(cls, file_name: str):
-        # You are required to implement this method
+        #csv separated by commas, ignore title row as is not data
         data = np.genfromtxt(file_name, delimiter=',', skip_header=1)
+        # extracting each column
         reference = data[:, 0]
         cave_height = data[:, 1]
         cave_depth = data[:, 2]
