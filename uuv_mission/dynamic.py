@@ -61,6 +61,8 @@ class Trajectory:
         plt.plot(mission.reference, 'r', linestyle='--', label='Reference')
         plt.legend(loc='upper right')
         plt.show()
+    def squared_error(self, mission: Mission):
+        return np.sum((self.position[:, 1] - mission.reference) ** 2)
 
 @dataclass
 class Mission:
