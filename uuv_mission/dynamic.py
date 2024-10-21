@@ -20,12 +20,12 @@ class Submarine:
 
 
     def transition(self, action: float, disturbance: float):
-        self.pos_x += self.vel_x * self.dt
-        self.pos_y += self.vel_y * self.dt
+        self.pos_x += self.vel_x * self.dt # update of x position by 1st order taylor expansion
+        self.pos_y += self.vel_y * self.dt # update of y position by 1st order taylor expansion
 
         force_y = -self.drag * self.vel_y + self.actuator_gain * (action + disturbance)
         acc_y = force_y / self.mass
-        self.vel_y += acc_y * self.dt
+        self.vel_y += acc_y * self.dt # update of y velocity by 1st order taylor expansion
 
     def get_depth(self) -> float:
         return self.pos_y
@@ -61,7 +61,7 @@ class Trajectory:
         plt.plot(mission.reference, 'r', linestyle='--', label='Reference')
         plt.legend(loc='upper right')
         plt.show()
-    def squared_error(self, mission: Mission):
+    def squared_error(self, mission: Mission): # method to calculate the sum of the squared errors for a single mission 
         return np.sum((self.position[:, 1] - mission.reference) ** 2)
 
 @dataclass
