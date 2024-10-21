@@ -1,7 +1,5 @@
 class PDController:
-     """
-    A Proportional-Derivative (PD) Controller class.
-    """
+    
     def __init__(self, K_P: float, K_D: float):
         #initalising the controller with the proportional and derivative gains
         self.K_P = K_P
